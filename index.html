@@ -1,0 +1,395 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>E-Tax Connect</title>
+    <meta
+      name="description"
+      content="Digital house tax payment prototype for Karnataka citizens"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="ambient ambient-one"></div>
+    <div class="ambient ambient-two"></div>
+
+    <header class="topbar glass">
+      <button class="brand" data-screen="lookup" aria-label="Go to home">
+        <span class="brand-mark" aria-hidden="true">ಈ</span>
+        <span>
+          <strong>E-Tax Connect</strong>
+          <small>Digital House Tax Portal</small>
+        </span>
+      </button>
+      <nav class="nav-actions" aria-label="Main navigation">
+        <button class="nav-link" data-screen="tracker">Track Receipt</button>
+        <button class="nav-link" data-screen="estimate">Estimate Tax</button>
+        <button class="nav-link" data-screen="grievance">Report Issue</button>
+        <div class="language-toggle" aria-label="Language">
+          <button class="active" data-lang="en">EN</button>
+          <button data-lang="kn">ಕನ್ನಡ</button>
+        </div>
+      </nav>
+      <button class="menu-button" aria-label="Open menu">☰</button>
+    </header>
+
+    <main>
+      <section class="screen active" id="lookup">
+        <div class="lookup-hero">
+          <div class="hero-card glass">
+            <div class="civic-badge">
+              <span>🏛</span>
+              Official civic service
+            </div>
+            <h1>Pay Your House Tax<br /><span>in 60 Seconds</span></h1>
+            <p>Zero queues. Instant official receipt.</p>
+
+            <div class="segmented" role="tablist" aria-label="Lookup type">
+              <button class="active" role="tab" data-lookup="pid">Property ID</button>
+              <button role="tab" data-lookup="mobile">Mobile Number</button>
+            </div>
+
+            <form id="lookup-form" class="lookup-form">
+              <label id="lookup-label" for="lookup-input">Property ID</label>
+              <div class="input-wrap">
+                <span class="input-icon" aria-hidden="true">⌕</span>
+                <input
+                  id="lookup-input"
+                  name="lookup"
+                  placeholder="e.g., PID-2026-8841"
+                  autocomplete="off"
+                  required
+                />
+              </div>
+              <button class="primary-button" type="submit">
+                Fetch Tax Details <span>→</span>
+              </button>
+            </form>
+
+            <div class="secondary-links">
+              <button data-screen="estimate"><span>🧮</span> Estimate My Tax</button>
+              <button id="reminder-link"><span>🔔</span> Get Due-Date Reminders</button>
+            </div>
+          </div>
+
+          <div class="trust-strip">
+            <div class="trust-pill glass"><span>🔒</span> 256-Bit Encrypted</div>
+            <div class="trust-pill glass"><span>⚡</span> Instant UPI Receipt</div>
+            <div class="trust-pill glass"><span>🏛️</span> Official Civic Sync</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen" id="summary">
+        <div class="summary-grid">
+          <article class="glass profile-card">
+            <div class="card-heading">
+              <div>
+                <span class="eyebrow">PROPERTY DETAILS</span>
+                <h2>Jayanagar Residence</h2>
+              </div>
+              <span class="status-pill pending">● Pending for FY 2026–27</span>
+            </div>
+
+            <div class="property-details">
+              <div><span>Owner name</span><strong>Suresh Kumar</strong></div>
+              <div><span>Door / Site No.</span><strong>14–A</strong></div>
+              <div><span>Built-up area</span><strong>1,200 sq. ft.</strong></div>
+              <div><span>Usage type</span><strong>Residential</strong></div>
+            </div>
+
+            <div class="ward-card">
+              <div class="ward-heading">
+                <span class="ward-icon">⌖</span>
+                <div>
+                  <span>Ward / Gram Panchayat</span>
+                  <strong>Ward 14 – Jayanagar</strong>
+                </div>
+              </div>
+              <div class="ward-people">
+                <div><span>Ward Member</span><strong>Lata Gowda</strong></div>
+                <div><span>Revenue Officer</span><strong>R. Prakash · Bill Collector</strong></div>
+              </div>
+              <p class="office-address">BBMP Office, 9th Block · +91 98765 43210</p>
+              <p class="office-hours">Mon–Sat, 10 AM – 5 PM</p>
+              <div class="contact-actions">
+                <a href="tel:+919876543210">📞 Call</a>
+                <a href="https://wa.me/919876543210" target="_blank" rel="noopener">💬 WhatsApp</a>
+                <a href="https://maps.google.com/?q=Jayanagar+Ward+14+Bangalore" target="_blank" rel="noopener">📍 Directions</a>
+              </div>
+            </div>
+
+            <div class="rebate-banner">
+              <span>🎁</span>
+              <p><strong>Early-bird saving available</strong>Pay before May 31 to keep your 5% rebate.</p>
+            </div>
+
+            <div class="linked-properties">
+              <span class="eyebrow">LINKED PROPERTIES</span>
+              <div class="property-chips">
+                <button class="active">PID-8841 ✓</button>
+                <button>PID-7120</button>
+                <button id="link-property">+ Link Property</button>
+              </div>
+            </div>
+
+            <div class="summary-footer">
+              <label class="switch-row">
+                <span>Remind me before due date</span>
+                <input type="checkbox" checked />
+                <span class="switch"></span>
+              </label>
+              <button class="text-button" data-screen="grievance">Something wrong in these details? <u>Report an issue</u></button>
+            </div>
+          </article>
+
+          <aside class="glass bill-card">
+            <span class="eyebrow">TAX BREAKDOWN</span>
+            <h2>FY 2026–27</h2>
+            <div class="bill-lines">
+              <div><span>Base Property Tax</span><strong>₹ 2,400.00</strong></div>
+              <div><span>Solid Waste Cess</span><strong>₹ 300.00</strong></div>
+              <div class="rebate-row"><span>Early Payment Rebate (5%)</span><strong>− ₹ 120.00</strong></div>
+            </div>
+            <div class="total-box">
+              <span>Total Payable</span>
+              <strong>₹ 2,580.00</strong>
+            </div>
+            <button class="primary-button" id="open-payment">
+              Proceed to Pay ₹ 2,580 <span>→</span>
+            </button>
+            <p class="secure-note">🔒 Secure civic payment gateway</p>
+          </aside>
+        </div>
+      </section>
+
+      <section class="screen" id="tracker">
+        <div class="form-shell tracker-shell">
+          <div class="page-heading">
+            <span class="eyebrow">PAYMENT HISTORY</span>
+            <h1>Track a Receipt</h1>
+          </div>
+          <form class="glass search-card" id="tracker-form">
+            <label for="receipt-input">Receipt number or Property ID</label>
+            <div class="input-wrap">
+              <span class="input-icon">⌕</span>
+              <input id="receipt-input" placeholder="RCT-992041 or PID-2026-8841" />
+              <button type="button" class="camera-button" aria-label="Verify via QR">▧</button>
+            </div>
+            <button class="primary-button" type="submit">Verify Receipt <span>→</span></button>
+          </form>
+          <div id="tracker-result" class="tracker-result"></div>
+          <div class="history-card glass">
+            <div class="history-heading">
+              <div><span>Receipt history</span><strong>PID-2026-8841</strong></div>
+              <span class="status-pill paid">● 2 Paid</span>
+            </div>
+            <div class="history-row">
+              <div><span>FY 2026–27</span><strong>RCT-992041</strong></div>
+              <div><span>27 Nov 2026</span><strong>₹ 2,580 · UPI</strong></div>
+              <button aria-label="Download receipt" data-download>⬇</button>
+            </div>
+            <div class="history-row">
+              <div><span>FY 2025–26</span><strong>RCT-871203</strong></div>
+              <div><span>18 Apr 2025</span><strong>₹ 2,410 · Net Banking</strong></div>
+              <button aria-label="Download receipt" data-download>⬇</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen" id="estimate">
+        <div class="estimator-grid">
+          <article class="glass form-card">
+            <div class="page-heading">
+              <span class="eyebrow">SELF-ASSESSMENT</span>
+              <h1>Estimate Your Tax</h1>
+              <p>Get a quick preview before finding your official dues.</p>
+            </div>
+            <form id="estimate-form">
+              <div class="field">
+                <label for="area">Built-up area</label>
+                <div class="unit-input"><input id="area" type="number" value="1200" min="100" /><span>sq. ft.</span></div>
+              </div>
+              <fieldset>
+                <legend>Usage type</legend>
+                <div class="choice-group">
+                  <label><input type="radio" name="usage" value="residential" checked /><span>Residential</span></label>
+                  <label><input type="radio" name="usage" value="commercial" /><span>Commercial</span></label>
+                </div>
+              </fieldset>
+              <div class="field">
+                <label for="zone">Zone / Ward</label>
+                <select id="zone">
+                  <option value="14">Ward 14 – Jayanagar</option>
+                  <option value="8">Ward 8 – Banashankari</option>
+                  <option value="22">Ward 22 – Whitefield</option>
+                </select>
+              </div>
+              <div class="field range-field">
+                <label for="age">Age of building <strong id="age-label">10 years</strong></label>
+                <input id="age" type="range" min="0" max="50" value="10" />
+              </div>
+            </form>
+          </article>
+          <aside class="glass estimate-result">
+            <span class="eyebrow">ESTIMATED ANNUAL TAX</span>
+            <strong id="estimate-total">₹ 2,700</strong>
+            <div class="estimate-lines">
+              <div><span>Base Property Tax</span><strong id="base-estimate">₹ 2,400</strong></div>
+              <div><span>Solid Waste Cess</span><strong id="cess-estimate">₹ 300</strong></div>
+            </div>
+            <p class="estimate-disclaimer">Estimate only — final amount as per official assessment.</p>
+            <button class="primary-button" data-screen="lookup">Check My Actual Dues <span>→</span></button>
+          </aside>
+        </div>
+      </section>
+
+      <section class="screen" id="grievance">
+        <div class="form-shell">
+          <article class="glass form-card grievance-card">
+            <div class="page-heading">
+              <span class="eyebrow">CORRECTION REQUEST</span>
+              <h1>Report an Issue</h1>
+            </div>
+            <form id="grievance-form">
+              <div class="field">
+                <label for="issue-type">Issue type</label>
+                <select id="issue-type" required>
+                  <option value="">Select an issue</option>
+                  <option>Wrong Area</option>
+                  <option>Wrong Usage Type</option>
+                  <option>Owner Name Error</option>
+                  <option>Duplicate Charge</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="issue-description">Description</label>
+                <textarea id="issue-description" rows="4" placeholder="Briefly describe the issue..." required></textarea>
+              </div>
+              <div class="field">
+                <label for="issue-file">Photo / document <span>(optional)</span></label>
+                <input id="issue-file" type="file" />
+              </div>
+              <div class="routing-banner">
+                <span>⌖</span>
+                <p><strong>Auto-routed to Ward 14</strong><br />Revenue Officer: R. Prakash · +91 98765 43210</p>
+              </div>
+              <button class="primary-button" type="submit">Submit Request <span>→</span></button>
+            </form>
+          </article>
+        </div>
+      </section>
+
+      <section class="screen" id="dashboard">
+        <div class="dashboard-shell">
+          <div class="dashboard-heading">
+            <div>
+              <span class="eyebrow">OFFICER PORTAL</span>
+              <h1>Panchayat Dashboard</h1>
+            </div>
+            <div>
+              <button class="ghost-button">Export Report</button>
+              <button class="small-primary">Send Bulk Reminders</button>
+            </div>
+          </div>
+          <div class="kpi-grid">
+            <div class="glass kpi-card"><span>Total Collected</span><strong>₹ 42.8L</strong><small class="positive">↑ 12.4% this month</small></div>
+            <div class="glass kpi-card"><span>Pending</span><strong>₹ 8.3L</strong><small>186 properties</small></div>
+            <div class="glass kpi-card"><span>Collection</span><strong>83.7%</strong><small class="positive">↑ 5.2% vs last FY</small></div>
+            <div class="glass kpi-card"><span>Avg. Payment Time</span><strong>48 sec</strong><small>↓ 52 sec faster</small></div>
+          </div>
+          <div class="dashboard-grid">
+            <article class="glass chart-card">
+              <div class="chart-heading"><span>Ward-wise collection</span><strong>₹ Lakhs</strong></div>
+              <div class="bar-chart" aria-label="Ward-wise collection chart">
+                <div><span style="--height:72%">72</span><small>Ward 8</small></div>
+                <div><span style="--height:88%">88</span><small>Ward 14</small></div>
+                <div><span style="--height:64%">64</span><small>Ward 22</small></div>
+              </div>
+            </article>
+            <article class="glass chart-card donut-card">
+              <div class="chart-heading"><span>Payment modes</span></div>
+              <div class="donut"><div><strong>68%</strong><span>UPI</span></div></div>
+              <div class="legend"><span><i class="teal"></i>UPI 68%</span><span><i class="indigo"></i>Net Banking 32%</span></div>
+            </article>
+            <article class="glass chart-card satisfaction-card">
+              <div class="chart-heading"><span>Citizen satisfaction</span><strong>94%</strong></div>
+              <div class="satisfaction-icons">
+                <div><span>😊</span><strong>186</strong><small>Very easy</small></div>
+                <div><span>😐</span><strong>18</strong><small>Okay</small></div>
+                <div><span>😟</span><strong>4</strong><small>Difficult</small></div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div class="modal-backdrop" id="payment-modal" aria-hidden="true">
+      <section class="payment-modal glass" role="dialog" aria-modal="true" aria-labelledby="payment-title">
+        <button class="modal-close" aria-label="Close payment">×</button>
+        <div class="payment-heading">
+          <div><span>Amount payable</span><strong id="payment-title">₹ 2,580.00</strong></div>
+          <div class="timer">04:59</div>
+        </div>
+        <div class="payment-tabs">
+          <button class="active" data-payment-tab="qr">Scan UPI QR</button>
+          <button data-payment-tab="upi">Enter UPI ID</button>
+        </div>
+        <div class="qr-panel" data-payment-panel="qr">
+          <div class="qr-box" aria-label="UPI QR code">
+            <div class="qr-grid">
+              <span></span><span></span><span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span><span></span><span></span>
+            </div>
+            <div class="qr-logo">₹</div>
+          </div>
+          <div class="upi-logos"><b>G Pay</b><b>phonepe</b><b>Paytm</b><b>BHIM</b></div>
+        </div>
+        <div class="upi-panel" data-payment-panel="upi" hidden>
+          <label for="upi-id">UPI ID</label>
+          <input id="upi-id" placeholder="name@bank" />
+          <button class="primary-button" id="pay-by-upi">Verify &amp; Pay <span>→</span></button>
+        </div>
+        <button class="simulate-button" id="simulate-payment">Simulate Payment Success</button>
+      </section>
+    </div>
+
+    <div class="modal-backdrop" id="success-modal" aria-hidden="true">
+      <section class="success-modal glass" role="dialog" aria-modal="true">
+        <button class="modal-close" aria-label="Close receipt">×</button>
+        <div class="success-icon">✓</div>
+        <h1>House Tax Paid Successfully!</h1>
+        <div class="receipt-preview">
+          <div><span>Receipt No.</span><strong>RCT-992041</strong></div>
+          <div><span>Date &amp; Time</span><strong>27 Nov 2026 · 17:49</strong></div>
+          <hr />
+          <div><span>Property ID</span><strong>PID-2026-8841</strong></div>
+          <div><span>Ward</span><strong>Ward 14 – Jayanagar</strong></div>
+          <div><span>Paid Amount</span><strong>₹ 2,580.00</strong></div>
+          <div><span>Payment Mode</span><strong>UPI</strong></div>
+          <div class="mini-qr">▦</div>
+        </div>
+        <div class="receipt-actions">
+          <button class="primary-button" id="download-pdf">⬇ Download PDF</button>
+          <button class="ghost-button" id="whatsapp-receipt">💬 WhatsApp</button>
+        </div>
+        <div class="feedback-strip">
+          <p>How easy was this compared to offline payment?</p>
+          <div class="feedback-options">
+            <button data-feedback="Very Easy">😊 <span>Very Easy</span></button>
+            <button data-feedback="Okay">😐 <span>Okay</span></button>
+            <button data-feedback="Difficult">😟 <span>Difficult</span></button>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="toast" id="toast" role="status"></div>
+    <script src="script.js"></script>
+  </body>
+</html>
